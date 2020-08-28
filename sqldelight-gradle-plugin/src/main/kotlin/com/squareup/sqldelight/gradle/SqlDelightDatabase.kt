@@ -158,6 +158,7 @@ class SqlDelightDatabase(
   ) {
     val verifyMigrationTask =
         project.tasks.register("verify${source.name.capitalize()}${name}Migration", VerifyMigrationTask::class.java) {
+          it.outputs.upToDateWhen { true }
           it.sourceFolders = sourceSet
           it.source(sourceSet)
           it.include("**${File.separatorChar}*.${SqlDelightFileType.defaultExtension}")
